@@ -16,14 +16,14 @@ public class TaskExecutor {
     private final ExecutorService executorService;
 
     public TaskExecutor() {
-        this.executorService = Executors.newFixedThreadPool(TEN); // Shared thread pool
+        this.executorService = Executors.newFixedThreadPool(TEN);
     }
 
     public List<Future<Boolean>> submitTasks(List<Ship> ships) {
         logger.info(SUBMITTING_SHIPS, ships.size());
 
         return ships.stream()
-                .map(ship -> executorService.submit(new ShipThread(ship))) // Submit tasks to the shared thread pool
+                .map(ship -> executorService.submit(new ShipThread(ship)))
                 .toList();
     }
 

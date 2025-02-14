@@ -6,7 +6,6 @@ import org.java5thsem.model.Ship;
 
 import java.util.concurrent.Callable;
 
-import static org.java5thsem.constant.PortConstant.ERROR_PROCESSING;
 
 public class ShipThread implements Callable<Boolean> {
     private static final Logger logger = LogManager.getLogger(ShipThread.class);
@@ -18,11 +17,6 @@ public class ShipThread implements Callable<Boolean> {
 
     @Override
     public Boolean call() {
-        try {
-            return ship.call();
-        } catch (Exception e) {
-            logger.error(ERROR_PROCESSING, ship.getId(), e);
-            return false;
-        }
+        return ship.call();
     }
 }
